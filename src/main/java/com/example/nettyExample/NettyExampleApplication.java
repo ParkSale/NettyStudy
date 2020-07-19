@@ -8,8 +8,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class NettyExampleApplication {
 	private int port;
@@ -32,7 +30,7 @@ public class NettyExampleApplication {
 					.childHandler(new ChannelInitializer<SocketChannel>() {
 						@Override
 						public void initChannel(SocketChannel ch) throws Exception {
-							ch.pipeline().addLast(new DiscardServerHandler());
+							ch.pipeline().addLast(new TimeServerHandler());
 						}
 					})
 					.option(ChannelOption.SO_BACKLOG, 128)
